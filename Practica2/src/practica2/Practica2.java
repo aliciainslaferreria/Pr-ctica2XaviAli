@@ -69,37 +69,21 @@ public class Practica2 {
                         res = n1 * n2;
                         break;
                     case "/":
-                        while (n2 == 0) {
-                            do {
-                                System.err.println("Al denominador hi ha un zero.\n"
-                                        + "Per a  evitar errors coloca un altre valor.");
-                                numero2 = sc.nextLine();
-                            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
-                            nume2 = Double.parseDouble(numero2);
-                            n2 = new Double(numero2);
-                        }
+                        n2 = validarDivisio(n2);
                         res = n1 / n2;
                         break;
                     case "*":
                         res = Math.pow(n1, n2);
                         break;
-                    case "%":
-                        while (n2 == 0) {
-                            do {
-                                System.err.println("Al denominador hi ha un zero.\n"
-                                        + "Per a  evitar errors coloca un altre valor.");
-                                numero2 = sc.nextLine();
-                            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
-                            nume2 = Double.parseDouble(numero2);
-                            n2 = new Double(numero2);
-                        }
+                    case "%":                        
+                        n2 = validarDivisio(n2);
                         res = n1 % n2;
                         break;
                 }
             } while (comprobar != true);
 
             System.out.println("\nResultat:");
-            System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
+            System.out.println("(" + n1 + ") " + operacion + " (" + n2 + ")" + " = " + res);
             System.out.println("\nVols continuar operant? (Ss/Nn)");
             do {
                 comprobar = true;
@@ -117,5 +101,19 @@ public class Practica2 {
                 }
             } while (comprobar != true);
         } while (operacion.equals("s") || operacion.equals("S"));
+    }
+
+    static double validarDivisio(double n2) {
+        Scanner sc = new Scanner(System.in);
+        String numero2;
+        while (n2 == 0) {
+            do {
+                System.err.println("Al denominador hi ha un zero.\n"
+                        + "Per a  evitar errors coloca un altre valor.");
+                numero2 = sc.nextLine();
+            } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
+            n2 = new Double(numero2);
+        }
+        return n2;
     }
 }
