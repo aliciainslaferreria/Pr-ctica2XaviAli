@@ -33,10 +33,7 @@ public class Practica2 {
             double n1 = new Double(numero1);
 
             do {
-                System.out.println("\n Operació? (Indica el signe)");
-                System.out.println("+ = sumar \n- = restar \n"
-                        + "x = multiplicar \n/ = dividir \n* = elevar primer num al segon num."
-                        + "\n% = residu");
+                printearMenu();
                 operacion = sc.nextLine();
                 if (operacion.equals("+") || operacion.equals("-") || operacion.equals("x")
                         || operacion.equals("X") || operacion.equals("/") || operacion.equals("%")
@@ -108,12 +105,19 @@ public class Practica2 {
         String numero2;
         while (n2 == 0) {
             do {
-                System.err.println("Al denominador hi ha un zero.\n"
+                System.err.println("\nAl denominador hi ha un zero.\n"
                         + "Per a  evitar errors coloca un altre valor.");
                 numero2 = sc.nextLine();
             } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
             n2 = new Double(numero2);
         }
         return n2;
+    }
+    
+    static void printearMenu(){
+        System.out.println("\n Operació? (Indica el signe)");
+                System.out.println("+ = sumar \n- = restar \n"
+                        + "x = multiplicar \n/ = dividir \n* = elevar primer num al segon num."
+                        + "\n% = residu");
     }
 }
